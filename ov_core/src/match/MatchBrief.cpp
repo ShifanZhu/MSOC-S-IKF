@@ -176,7 +176,7 @@ bool MatchBrief::DetectLoop(Keyframe& kf)
     {
         int feature_num = kf.keypoints.size();
         cv::resize(kf.image, compressed_image, cv::Size(376, 240));
-        putText(compressed_image, "feature_num:" + to_string(feature_num), cv::Point2f(10, 10), CV_FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255));
+        putText(compressed_image, "feature_num:" + to_string(feature_num), cv::Point2f(10, 10), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255));
         
     }
 
@@ -198,7 +198,7 @@ bool MatchBrief::DetectLoop(Keyframe& kf)
     {
         loop_result = compressed_image.clone();
         if (ret.size() > 0)
-            putText(loop_result, "neighbour score:" + to_string(ret[0].Score), cv::Point2f(10, 50), CV_FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255));
+            putText(loop_result, "neighbour score:" + to_string(ret[0].Score), cv::Point2f(10, 50), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255));
     }
     // visual loop result 
     if (_options.show_image)
@@ -208,7 +208,7 @@ bool MatchBrief::DetectLoop(Keyframe& kf)
             int tmp_index = ret[i].Id;
             Keyframe* tmp = kfdatabase->get_keyframe(tmp_index);
             cv::Mat tmp_image = tmp->image.clone();
-            putText(tmp_image, "index:  " + to_string(tmp_index) + "loop score:" + to_string(ret[i].Score), cv::Point2f(10, 50), CV_FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255));
+            putText(tmp_image, "index:  " + to_string(tmp_index) + "loop score:" + to_string(ret[i].Score), cv::Point2f(10, 50), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255));
             cv::hconcat(loop_result, tmp_image, loop_result);
             cv::imshow("loop_result", loop_result);
             cv::waitKey(20);
@@ -229,7 +229,7 @@ bool MatchBrief::DetectLoop(Keyframe& kf)
                     int tmp_index = ret[i].Id;
                     Keyframe* tmp = kfdatabase->get_keyframe(tmp_index);
                     cv::Mat tmp_image = tmp->image.clone();
-                    putText(tmp_image, "loop score:" + to_string(ret[i].Score), cv::Point2f(10, 50), CV_FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255));
+                    putText(tmp_image, "loop score:" + to_string(ret[i].Score), cv::Point2f(10, 50), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255));
                     cv::hconcat(loop_result, tmp_image, loop_result);
                     cv::imshow("loop_result", loop_result);
                     cv::waitKey(20);

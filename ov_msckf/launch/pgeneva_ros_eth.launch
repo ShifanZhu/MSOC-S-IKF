@@ -1,18 +1,18 @@
 <launch>
 
     <!-- mono or stereo and what ros bag to play -->
-    <arg name="max_cameras" default="2" />
-    <arg name="use_stereo"  default="true" />
+    <arg name="max_cameras" default="1" />
+    <arg name="use_stereo"  default="false" />
     <arg name="used_dataset" default="euroc" />
     <arg name="bag_start"   default="0" /> <!-- v1-2: 0, mh1: 40, mh2: 35, mh3-5: 20 -->
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/V1_02_medium.bag" /> -->
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/V1_03_difficult.bag" /> -->
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/V2_02_medium.bag" /> -->
-    <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/V2_03_difficult.bag" />
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/MH_02_easy.bag" /> -->
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/MH_03_medium.bag" /> -->
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/MH_04_difficult.bag" /> -->
-    <!-- <arg name="bag"         default="/home/zzq/DataSet/euroc_mav/MH_05_difficult.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/V1_02_medium.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/V1_03_difficult.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/V2_02_medium.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/V2_03_difficult.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/MH_02_easy.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/MH_03_medium.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/MH_04_difficult.bag" /> -->
+    <!-- <arg name="bag"         default="/home/zh/data/euroc/MH_05_difficult.bag" /> -->
 
     <!-- imu starting thresholds -->
     <arg name="init_window_time"  default="0.75" />   <!-- MH04 0.5 others 0.75-->
@@ -181,7 +181,7 @@
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(find ov_msckf)/launch/display.rviz" />
 
     <!-- play the dataset -->
-    <node pkg="rosbag" type="play" name="rosbag" args="-d 5 -r 1 -s $(arg bag_start) $(arg bag)" required="true"/>
+    <!-- <node pkg="rosbag" type="play" name="rosbag" args="-d 5 -r 1 -s $(arg bag_start) $(arg bag)" required="true"/> -->
 
     <!-- record the trajectory if enabled -->
     <group if="$(arg dosave)">
